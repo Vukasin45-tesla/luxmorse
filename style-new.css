@@ -2486,3 +2486,129 @@ body {
     transition: none !important;
   }
 }
+/* ---------------------------------------------------------
+   7) CUSTOM UX UPDATE (menu hover borders, floating cards, contact refresh)
+--------------------------------------------------------- */
+
+/* meni kartice: hover border menja boju između #008000 i #e69500 */
+.menu-showcase .menu-pack {
+  border: 1px solid rgba(35, 49, 31, 0.12);
+}
+
+.menu-showcase .menu-pack:hover {
+  border-color: transparent;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.62)) padding-box,
+    linear-gradient(120deg, #008000, #e69500, #008000, #e69500) border-box;
+  background-size: 100% 100%, 240% 240%;
+  animation: menuHoverBorderShift 2.5s linear infinite;
+}
+
+@keyframes menuHoverBorderShift {
+  0% { background-position: 0 0, 0% 50%; }
+  100% { background-position: 0 0, 200% 50%; }
+}
+
+/* sekcija usluge: jača animirana pozadina + centralizovan tekst */
+.services-animated-bg {
+  background:
+    radial-gradient(circle at 12% 20%, rgba(0,128,0,0.14), transparent 34%),
+    radial-gradient(circle at 85% 16%, rgba(230,149,0,0.16), transparent 32%),
+    radial-gradient(circle at 50% 86%, rgba(0,128,0,0.10), transparent 30%);
+}
+
+.services .section-head {
+  max-width: 900px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+/* 3 kartice iznad usluga: float + glossy + border #e69500 + pomerene dole */
+.intro-strip {
+  padding-bottom: 90px;
+}
+
+.intro-item {
+  margin-top: 50px;
+  border: 1px solid #e69500;
+  animation: introFloat 6.8s ease-in-out infinite;
+}
+
+.intro-item:nth-child(2) {
+  animation-delay: -1.2s;
+}
+
+.intro-item:nth-child(3) {
+  animation-delay: -2.2s;
+}
+
+.intro-item::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(108deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.06) 40%, rgba(230,149,0,0.14) 100%);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+@keyframes introFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -10px, 0); }
+}
+
+/* kontakt info blok moderniji */
+.contact-lines {
+  margin-top: 32px;
+  gap: 12px;
+}
+
+.contact-lines div {
+  padding: 14px 16px;
+  border: 1px solid rgba(35,49,31,0.1);
+  border-radius: 14px;
+  background: linear-gradient(120deg, rgba(255,255,255,0.62), rgba(255,255,255,0.36));
+  backdrop-filter: blur(2px);
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-lines div:hover {
+  transform: translateY(-2px);
+  border-color: rgba(230,149,0,0.45);
+  box-shadow: 0 14px 24px rgba(35, 49, 31, 0.08);
+}
+
+/* proces kartice: tajming animacija 01+03 pa 02+04 */
+.process-step-modern {
+  overflow: hidden;
+}
+
+.process-step-modern::before {
+  content: "";
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(230,149,0,0.32) 0%, rgba(0,128,0,0.12) 48%, transparent 72%);
+  filter: blur(0.5px);
+  top: 10px;
+  right: 12px;
+  opacity: 0;
+  transform: scale(0.6);
+  animation: processPulseA 4s ease-in-out infinite;
+}
+
+.process-step-modern:nth-child(2)::before,
+.process-step-modern:nth-child(4)::before {
+  animation-name: processPulseB;
+}
+
+@keyframes processPulseA {
+  0%, 20%, 100% { opacity: 0; transform: scale(0.6); }
+  32%, 52% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes processPulseB {
+  0%, 45%, 100% { opacity: 0; transform: scale(0.6); }
+  58%, 78% { opacity: 1; transform: scale(1); }
+}
