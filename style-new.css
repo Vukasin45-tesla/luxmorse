@@ -931,11 +931,6 @@ button {
   margin-bottom: 24px;
 }
 
-/* Privremeno sakriveni dugmići/tabovi iz menija po zahtevu */
-.menu-tabs {
-  display: none;
-}
-
 .menu-chip {
   padding: 11px 16px;
   font-weight: 800;
