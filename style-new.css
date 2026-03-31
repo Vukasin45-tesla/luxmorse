@@ -723,6 +723,7 @@ button {
   left: -6%;
   top: 16px;
   transform: rotate(-4deg);
+  animation: transitionPaperDriftA 8.5s ease-in-out infinite;
 }
 
 .transition-paper-mid {
@@ -731,6 +732,7 @@ button {
   left: 24%;
   top: 30px;
   transform: rotate(2deg);
+  animation: transitionPaperDriftB 9.5s ease-in-out infinite;
 }
 
 .transition-paper-front {
@@ -739,6 +741,7 @@ button {
   right: -4%;
   top: 14px;
   transform: rotate(-3deg);
+  animation: transitionPaperDriftC 7.8s ease-in-out infinite;
 }
 
 .transition-wave {
@@ -924,11 +927,7 @@ button {
 }
 
 .menu-tabs {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  display: none;
 }
 
 .menu-chip {
@@ -958,7 +957,10 @@ button {
 }
 
 .menu-pack {
-  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+  transition:
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease;
 }
 
 .menu-pack--interactive {
@@ -1245,6 +1247,8 @@ button {
       transparent 36px 44px
     );
   opacity: 0.95;
+  background-size: 220% 100%;
+  animation: processDashMove 4.2s linear infinite;
 }
 
 .process-no {
@@ -2332,12 +2336,31 @@ body {
   animation: menuShadowBreath 6s ease-in-out infinite;
 }
 
+.menu-showcase .menu-pack:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 24px 48px rgba(35, 49, 31, 0.14),
+    0 10px 20px rgba(230,149,0,0.08);
+}
+
+.menu-showcase .menu-pack .menu-swipe-shell {
+  animation: menuCardFloat 6.8s ease-in-out infinite;
+}
+
 .menu-showcase .menu-pack:nth-child(2) {
   animation-delay: 1.2s;
 }
 
+.menu-showcase .menu-pack:nth-child(2) .menu-swipe-shell {
+  animation-delay: 1.1s;
+}
+
 .menu-showcase .menu-pack:nth-child(3) {
   animation-delay: 2.2s;
+}
+
+.menu-showcase .menu-pack:nth-child(3) .menu-swipe-shell {
+  animation-delay: 2.1s;
 }
 
 @keyframes menuGlassFloatA {
@@ -2371,6 +2394,31 @@ body {
       0 28px 54px rgba(35, 49, 31, 0.15),
       0 12px 24px rgba(230,149,0,0.06);
   }
+}
+
+@keyframes menuCardFloat {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
+@keyframes processDashMove {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 0 0, 88px 0; }
+}
+
+@keyframes transitionPaperDriftA {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-4deg); }
+  50% { transform: translate3d(0, -16px, 0) rotate(-6deg); }
+}
+
+@keyframes transitionPaperDriftB {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(2deg); }
+  50% { transform: translate3d(0, 14px, 0) rotate(5deg); }
+}
+
+@keyframes transitionPaperDriftC {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-3deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(-6deg); }
 }
 
 @keyframes menuGridDriftSoft {
