@@ -931,6 +931,11 @@ button {
   margin-bottom: 24px;
 }
 
+/* Privremeno sakriveni dugmići/tabovi iz menija po zahtevu */
+.menu-tabs {
+  display: none;
+}
+
 .menu-chip {
   padding: 11px 16px;
   font-weight: 800;
@@ -1245,6 +1250,48 @@ button {
       transparent 36px 44px
     );
   opacity: 0.95;
+}
+
+.process-line {
+  background-size: 130px 100%;
+  animation: processDashFlow 2.8s linear infinite;
+}
+
+.process-track-modern > .process-step-modern:nth-child(odd) {
+  border-color: rgba(230,149,0,0.72);
+  box-shadow: 0 16px 34px rgba(35, 49, 31, 0.13), 0 0 0 1px rgba(230,149,0,0.2) inset;
+}
+
+.process-track-modern > .process-step-modern:nth-child(even) {
+  border-color: rgba(0,128,0,0.72);
+  box-shadow: 0 16px 34px rgba(35, 49, 31, 0.13), 0 0 0 1px rgba(0,128,0,0.2) inset;
+}
+
+.process-track-modern > .process-step-modern:nth-child(odd) .process-no {
+  color: rgba(230,149,0,0.36);
+}
+
+.process-track-modern > .process-step-modern:nth-child(even) .process-no {
+  color: rgba(0,128,0,0.34);
+}
+
+.process-step-modern {
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background-color var(--transition);
+}
+
+.process-step-modern:hover {
+  background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.62));
+  box-shadow: 0 24px 48px rgba(35,49,31,0.16), 0 0 0 999px rgba(255,255,255,0.08) inset;
+}
+
+.process-track-modern > .process-step-modern:nth-child(odd):hover {
+  border-color: #e69500;
+  box-shadow: 0 24px 48px rgba(35,49,31,0.16), 0 0 0 999px rgba(230,149,0,0.08) inset;
+}
+
+.process-track-modern > .process-step-modern:nth-child(even):hover {
+  border-color: #008000;
+  box-shadow: 0 24px 48px rgba(35,49,31,0.16), 0 0 0 999px rgba(0,128,0,0.08) inset;
 }
 
 .process-no {
@@ -1824,6 +1871,11 @@ button {
   0% { transform: translateX(-4%); }
   50% { transform: translateX(4%); }
   100% { transform: translateX(-4%); }
+}
+
+@keyframes processDashFlow {
+  0% { background-position: 0 0; }
+  100% { background-position: -130px 0; }
 }
 
 @keyframes waveShift {
