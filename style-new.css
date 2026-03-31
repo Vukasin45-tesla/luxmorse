@@ -344,6 +344,57 @@ button {
   overflow: clip;
 }
 
+.hero-top-wrap {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 14%, rgba(230, 149, 0, 0.12), transparent 34%),
+    radial-gradient(circle at 88% 24%, rgba(0, 128, 0, 0.12), transparent 32%),
+    linear-gradient(180deg, #fffef7 0%, #f9f7eb 58%, #f4f2df 100%);
+}
+
+.hero-top-background {
+  position: absolute;
+  inset: 84px 0 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.top-bg-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(0.2px);
+  opacity: 0.78;
+}
+
+.top-bg-blob-1 {
+  width: 760px;
+  height: 460px;
+  left: 28%;
+  top: 80px;
+  background: rgba(0, 128, 0, 0.1);
+  animation: heroBlobFloatA 16s ease-in-out infinite;
+}
+
+.top-bg-blob-2 {
+  width: 620px;
+  height: 360px;
+  right: -130px;
+  top: 200px;
+  background: rgba(230, 149, 0, 0.12);
+  animation: heroBlobFloatB 17s ease-in-out infinite;
+}
+
+.top-bg-blob-3 {
+  width: 560px;
+  height: 280px;
+  left: -150px;
+  bottom: -40px;
+  background: rgba(230, 149, 0, 0.09);
+  animation: heroBlobFloatC 19s ease-in-out infinite;
+}
+
 .hero-paper-scene,
 .hero-badges-layer,
 .hero-services-transition,
@@ -357,6 +408,8 @@ button {
 }
 
 .hero-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 54px;
@@ -613,20 +666,35 @@ button {
 .hero-badges-layer {
   position: absolute;
   inset: 0;
+  z-index: 3;
 }
 
 .floating-food-badge {
+  position: absolute;
   padding: 11px 16px;
   font-weight: 800;
-  color: var(--text);
+  color: #1b2a18;
+  border-width: 1.5px;
   box-shadow: var(--shadow-sm);
-  animation: badgeFloat 7s ease-in-out infinite;
+  animation: badgeOrbit 9s ease-in-out infinite;
 }
 
-.badge-plate { top: 14%; right: 17%; }
-.badge-delivery { top: 34%; left: 6%; animation-delay: -2s; }
-.badge-fresh { bottom: 20%; right: 8%; animation-delay: -4s; }
-.badge-event { bottom: 12%; left: 16%; animation-delay: -1s; }
+.badge-plate,
+.badge-fresh {
+  background: rgba(0, 128, 0, 0.17);
+  border-color: rgba(0, 128, 0, 0.36);
+}
+
+.badge-delivery,
+.badge-event {
+  background: rgba(230, 149, 0, 0.2);
+  border-color: rgba(230, 149, 0, 0.38);
+}
+
+.badge-plate { top: 16%; right: 17%; animation-delay: -1.2s; }
+.badge-delivery { top: 38%; left: 4%; animation-delay: -4.3s; }
+.badge-fresh { bottom: 22%; right: 7%; animation-delay: -2.4s; }
+.badge-event { bottom: 14%; left: 14%; animation-delay: -5.8s; }
 
 .intro-strip {
   position: relative;
@@ -1815,6 +1883,28 @@ button {
   50% { transform: translate3d(0, -10px, 0); }
 }
 
+@keyframes badgeOrbit {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1.5deg); }
+  25% { transform: translate3d(12px, -10px, 0) rotate(1.5deg); }
+  50% { transform: translate3d(0, -18px, 0) rotate(-0.5deg); }
+  75% { transform: translate3d(-12px, -8px, 0) rotate(1.1deg); }
+}
+
+@keyframes heroBlobFloatA {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(-34px, 16px, 0); }
+}
+
+@keyframes heroBlobFloatB {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(26px, -18px, 0); }
+}
+
+@keyframes heroBlobFloatC {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(30px, -16px, 0); }
+}
+
 @keyframes glowPulse {
   0%, 100% { transform: scale(1); opacity: 0.6; }
   50% { transform: scale(1.08); opacity: 0.9; }
@@ -1935,6 +2025,22 @@ button {
     padding-top: 44px;
   }
 
+  .hero-top-background {
+    inset: 76px 0 0;
+  }
+
+  .top-bg-blob-1 {
+    width: 520px;
+    height: 320px;
+    left: 24%;
+  }
+
+  .top-bg-blob-2 {
+    width: 400px;
+    height: 260px;
+    right: -120px;
+  }
+
   .hero-frame,
   .hero-frame-premium {
     min-height: 500px;
@@ -1973,6 +2079,14 @@ button {
   .hero-copy h1 {
     font-size: 2.35rem;
   }
+
+  .floating-food-badge {
+    font-size: 0.9rem;
+    padding: 9px 13px;
+  }
+
+  .badge-delivery { left: 3%; }
+  .badge-event { left: 8%; }
 
   .hero-actions,
   .hero-trust,
