@@ -405,7 +405,6 @@
                           </div>
                           <div class="menu-pack-footer">
                             <span>Za 20+ gostiju</span>
-                            <button type="button" class="menu-expand-btn" data-menu-expand>Vidi ceo meni</button>
                           </div>
                           <div class="menu-swipe-hint menu-swipe-hint--price">
                             <span>Ovde možeš upisati cenu ovog menija</span>
@@ -478,7 +477,6 @@
                           </div>
                           <div class="menu-pack-footer">
                             <span>Za firme i evente</span>
-                            <button type="button" class="menu-expand-btn" data-menu-expand>Vidi ceo meni</button>
                           </div>
                           <div class="menu-swipe-hint menu-swipe-hint--price">
                             <span>Ovde možeš upisati cenu ovog menija</span>
@@ -550,7 +548,6 @@
                           </div>
                           <div class="menu-pack-footer">
                             <span>Po dogovoru</span>
-                            <button type="button" class="menu-expand-btn" data-menu-expand>Vidi ceo meni</button>
                           </div>
                           <div class="menu-swipe-hint menu-swipe-hint--price">
                             <span>Ovde možeš upisati cenu ovog menija</span>
@@ -989,19 +986,6 @@
             setCardView(card.dataset.view === "gallery" ? "info" : "gallery");
           });
         });
-
-        const expandButton = card.querySelector("[data-menu-expand]");
-
-        if (expandButton) {
-          expandButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            event.stopPropagation();
-            card.classList.toggle("menu-pack--expanded");
-            expandButton.textContent = card.classList.contains("menu-pack--expanded")
-              ? "Zatvori meni"
-              : "Vidi ceo meni";
-          });
-        }
 
         thumbs.forEach((thumb) => {
           thumb.addEventListener("click", (event) => {

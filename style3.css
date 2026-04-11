@@ -1261,47 +1261,6 @@ button {
   overflow: hidden;
 }
 
-.menu-pack--expanded {
-  min-height: 760px;
-}
-
-.menu-pack--expanded .menu-swipe-shell {
-  min-height: 760px;
-}
-
-.menu-pack--expanded .menu-pack-scroll-area {
-  overflow-y: scroll;
-  padding-right: 8px;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(230,149,0,0.45) transparent;
-}
-
-.menu-pack--expanded .menu-pack-scroll-area::-webkit-scrollbar {
-  width: 8px;
-}
-
-.menu-pack--expanded .menu-pack-scroll-area::-webkit-scrollbar-thumb {
-  background: rgba(230,149,0,0.32);
-  border-radius: 999px;
-}
-
-.menu-expand-btn {
-  min-height: 42px;
-  padding: 0 16px;
-  border-radius: 999px;
-  border: 1px solid rgba(35, 49, 31, 0.12);
-  background: rgba(255,255,255,0.8);
-  color: var(--secondary);
-  font-weight: 800;
-  cursor: pointer;
-  transition: transform var(--transition), border-color var(--transition), background var(--transition);
-}
-
-.menu-expand-btn:hover {
-  transform: translateY(-2px);
-  border-color: rgba(230,149,0,0.45);
-}
-
 .menu-swipe-hint {
   margin-top: auto;
   padding-top: 18px;
@@ -2475,11 +2434,6 @@ button {
   .menu-swipe-shell {
     min-height: 560px;
   }
-
-  .menu-pack--expanded,
-  .menu-pack--expanded .menu-swipe-shell {
-    min-height: 700px;
-  }
 }
 
 @media (max-width: 860px) {
@@ -2611,10 +2565,6 @@ button {
     min-height: 580px;
   }
 
-  .menu-pack--expanded,
-  .menu-pack--expanded .menu-swipe-shell {
-    min-height: 680px;
-  }
 
   .menu-gallery-main {
     height: 235px;
