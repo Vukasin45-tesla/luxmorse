@@ -3739,12 +3739,12 @@ body {
 .menu-pack--slider {
   width: 100%;
   max-width: 100%;
-  min-height: 700px;
+  min-height: 760px;
   border-radius: 38px;
 }
 
 .menu-pack--slider .menu-swipe-shell {
-  min-height: 700px;
+  min-height: 760px;
 }
 
 .menu-pack--slider .menu-pack-face {
@@ -3859,6 +3859,10 @@ body {
 .menu-pack--slider .menu-gallery-thumbs {
   grid-auto-columns: 98px;
   gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 12px;
+  scrollbar-gutter: stable both-edges;
 }
 
 .menu-pack--slider .menu-thumb {
@@ -3895,7 +3899,7 @@ body {
 @media (max-width: 1024px) {
   .menu-pack--slider,
   .menu-pack--slider .menu-swipe-shell {
-    min-height: 660px;
+    min-height: 720px;
   }
 
   .menu-pack--slider .menu-pack-face {
@@ -3938,7 +3942,7 @@ body {
 
   .menu-pack--slider,
   .menu-pack--slider .menu-swipe-shell {
-    min-height: 620px;
+    min-height: 680px;
   }
 
   .menu-pack--slider .menu-pack-face {

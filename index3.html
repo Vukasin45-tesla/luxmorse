@@ -945,6 +945,7 @@
         const thumbs = card.querySelectorAll(".menu-thumb");
         const toggles = card.querySelectorAll("[data-menu-toggle]");
         const interactiveSelector = "a, button, input, textarea, label, img";
+        const autoSlideMs = 3500;
 
         let startX = 0;
         let deltaX = 0;
@@ -968,6 +969,7 @@
           mainImage.alt = thumb.dataset.alt || thumb.querySelector("img")?.alt || "Galerija menija";
           thumbs.forEach((item) => item.classList.remove("active"));
           thumb.classList.add("active");
+          thumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
         };
 
         const handleSwipeResult = () => {
@@ -980,6 +982,15 @@
 
         setCardView("info");
         applyThumb(card.querySelector(".menu-thumb.active") || thumbs[0]);
+
+        if (thumbs.length > 1) {
+          window.setInterval(() => {
+            if (card.dataset.view !== "gallery") return;
+            const activeIndex = Array.from(thumbs).findIndex((item) => item.classList.contains("active"));
+            const nextIndex = (activeIndex + 1) % thumbs.length;
+            applyThumb(thumbs[nextIndex]);
+          }, autoSlideMs);
+        }
 
         toggles.forEach((btn) => {
           btn.addEventListener("click", (event) => {
