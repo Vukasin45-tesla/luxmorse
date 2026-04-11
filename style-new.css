@@ -1832,6 +1832,58 @@ button {
   padding: 30px;
 }
 
+.footer-shell > *:not(.footer-wave-layer) {
+  position: relative;
+  z-index: 2;
+}
+
+.footer-wave-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.footer-wave {
+  position: absolute;
+  left: -12%;
+  width: 124%;
+  border-radius: 45% 55% 0 0 / 100% 100% 0 0;
+  filter: blur(6px);
+}
+
+.footer-wave-a {
+  height: 180px;
+  bottom: -72px;
+  background: linear-gradient(180deg, rgba(0,128,0,0.08), rgba(0,128,0,0.2));
+  opacity: 0.52;
+  animation: footerWaveFloatA 11s ease-in-out infinite;
+}
+
+.footer-wave-b {
+  height: 140px;
+  bottom: -40px;
+  background: linear-gradient(180deg, rgba(230,149,0,0.08), rgba(230,149,0,0.18));
+  opacity: 0.5;
+  animation: footerWaveFloatB 14s ease-in-out infinite;
+}
+
+.footer-wave-c {
+  height: 110px;
+  bottom: 22px;
+  background: linear-gradient(
+    90deg,
+    rgba(0,128,0,0) 0%,
+    rgba(0,128,0,0.1) 28%,
+    rgba(230,149,0,0.13) 52%,
+    rgba(0,128,0,0.1) 76%,
+    rgba(0,128,0,0) 100%
+  );
+  opacity: 0.5;
+  animation: footerWaveFloatC 16s ease-in-out infinite;
+}
+
 .footer-grid,
 .footer-top {
   display: grid;
@@ -1854,9 +1906,38 @@ button {
 }
 
 .footer-badges span {
-  padding: 9px 14px;
-  color: var(--muted);
+  position: relative;
+  padding: 10px 18px;
+  color: #5f7258;
   font-weight: 700;
+  border-color: transparent;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.76)) padding-box,
+    linear-gradient(120deg, rgba(0,128,0,0.58), rgba(230,149,0,0.74), rgba(0,128,0,0.58)) border-box;
+  background-size: 100% 100%, 220% 220%;
+  overflow: hidden;
+  isolation: isolate;
+  animation: footerBadgeBorderFlow 3.4s linear infinite;
+}
+
+.footer-badges span::before,
+.footer-badges span::after {
+  content: "";
+  position: absolute;
+  inset: auto -16% -68%;
+  height: 120%;
+  border-radius: 44% 56% 0 0 / 100% 100% 0 0;
+  z-index: -1;
+}
+
+.footer-badges span::before {
+  background: linear-gradient(180deg, rgba(0,128,0,0.16), rgba(0,128,0,0.04));
+  animation: footerBadgeWaveA 4.8s ease-in-out infinite;
+}
+
+.footer-badges span::after {
+  background: linear-gradient(180deg, rgba(230,149,0,0.16), rgba(230,149,0,0.04));
+  animation: footerBadgeWaveB 5.7s ease-in-out infinite reverse;
 }
 
 .footer-links-group h4,
@@ -2063,6 +2144,36 @@ button {
 @keyframes spinSlow {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes footerWaveFloatA {
+  0%, 100% { transform: translate3d(0, 0, 0) scaleX(1); }
+  50% { transform: translate3d(3%, -14px, 0) scaleX(1.05); }
+}
+
+@keyframes footerWaveFloatB {
+  0%, 100% { transform: translate3d(0, 0, 0) scaleX(1.02); }
+  50% { transform: translate3d(-2.4%, -9px, 0) scaleX(1.08); }
+}
+
+@keyframes footerWaveFloatC {
+  0%, 100% { transform: translate3d(0, 0, 0); opacity: 0.45; }
+  50% { transform: translate3d(2%, -7px, 0); opacity: 0.7; }
+}
+
+@keyframes footerBadgeBorderFlow {
+  0% { background-position: 0 0, 0% 50%; }
+  100% { background-position: 0 0, 200% 50%; }
+}
+
+@keyframes footerBadgeWaveA {
+  0%, 100% { transform: translateY(0) scaleX(1); }
+  50% { transform: translateY(-5px) scaleX(1.05); }
+}
+
+@keyframes footerBadgeWaveB {
+  0%, 100% { transform: translateY(0) scaleX(1.02); }
+  50% { transform: translateY(-4px) scaleX(1.08); }
 }
 
 @keyframes heroImageFloat {
@@ -2765,6 +2876,10 @@ body {
   .menu-showcase .menu-bg-orb,
   .menu-showcase .menu-animated-bg::before,
   .menu-showcase .menu-animated-bg::after,
+  .footer-wave,
+  .footer-badges span,
+  .footer-badges span::before,
+  .footer-badges span::after,
   .contact-paper-contact .contact-paper-scene::before,
   .contact-paper-contact .contact-paper-scene::after {
     animation: none !important;
