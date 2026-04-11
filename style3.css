@@ -3877,6 +3877,7 @@ body {
 }
 
 .menu-pack--slider .menu-gallery-main {
+  flex: 0 0 420px;
   height: 420px;
 }
 
@@ -3931,6 +3932,7 @@ body {
   }
 
   .menu-pack--slider .menu-gallery-main {
+    flex-basis: 360px;
     height: 360px;
   }
 }
@@ -4000,6 +4002,7 @@ body {
   }
 
   .menu-pack--slider .menu-gallery-main {
+    flex-basis: 300px;
     height: 300px;
   }
 }
